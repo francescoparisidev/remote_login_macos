@@ -1,8 +1,8 @@
 result=$(sudo systemsetup -getremotelogin)
-if [[ $result == *"Remote Login: Off"* ]]
+if [[ $result == *"Off"* ]]
 then
     while true; do
-        read -p "Off, Do you want to turn-on?" yn
+        read -p "OFF, Do you want to turn-on? (y/n) " yn
         case $yn in
             [Yy]* ) sudo launchctl load /System/Library/LaunchDaemons/ssh.plist; break;;
             [Nn]* ) exit;;
@@ -11,7 +11,7 @@ then
     done
 else
     while true; do
-        read -p "On, Do you want to turn-off?" yn
+        read -p "ON, Do you want to turn-off? (y/n) " yn
         case $yn in
             [Yy]* ) sudo launchctl unload /System/Library/LaunchDaemons/ssh.plist; break;;
             [Nn]* ) exit;;
